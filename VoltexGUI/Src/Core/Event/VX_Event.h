@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VX_Types.h"
+#include "VX_HelperMacroes.h"
 
 #include <functional>
 #include <vector>
@@ -34,13 +35,13 @@ namespace Voltex {
 			m_callable(std::move(function)),
 			m_isMemberFunction(false) {};
 
-		[[nodiscard]]void operator()(const Args&... args) const noexcept {
+		VX_NO_DISCARD void operator()(const Args&... args) const noexcept {
 			if (m_callable) {
 				m_callable(args...);
 			}
 		}
 
-		[[nodiscard]]bool operator==(const VX_EventHandler other) const noexcept {
+		VX_NO_DISCARDbool operator==(const VX_EventHandler other) const noexcept {
 			if (!m_isMemberFunction) {
 				return false;
 			}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VX_Event.h"
+#include "VX_HelperMacroes.h"
 
 #include <utility>
 
@@ -33,7 +34,7 @@ namespace Voltex {
 		operator T&() noexcept { return m_value; }
 
 		T& Get() noexcept { return m_value; }
-		[[nodiscard]]const T& Get() const noexcept { return m_value; }
+		VX_NO_DISCARD const T& Get() const noexcept { return m_value; }
 
 		VX_Event<const T&, const T&>& Changed() { return m_changed; }
 
