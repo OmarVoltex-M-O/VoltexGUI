@@ -1,26 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Dll">
-      <UniqueIdentifier>{81E2870B-EDEB-877C-7667-9E7CE26F937C}</UniqueIdentifier>
+    <Filter Include="Common">
+      <UniqueIdentifier>{8EEA3EAC-7A8C-6982-6347-7DD64F88F0D2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Dll\Inc">
-      <UniqueIdentifier>{EA45E279-5625-6115-5F3D-ECEBCB9BC776}</UniqueIdentifier>
+    <Filter Include="Common\HelperMacroes">
+      <UniqueIdentifier>{674826E3-53D7-AFAC-FCF5-C3A7E863C052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Inc">
+      <UniqueIdentifier>{778CC82F-6344-0A7D-CC4B-E3D8B822A56D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Src">
+      <UniqueIdentifier>{85B7C82F-716F-0A7D-DA76-E3D8C64DA56D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Types">
+      <UniqueIdentifier>{B2E0EA44-9E43-7AE9-47C9-B29F330B466C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Dll">
+      <UniqueIdentifier>{991099C2-85DD-F3CD-AEF6-E1759A22295C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Dll\Inc">
+      <UniqueIdentifier>{02C08C93-EE22-1C38-97A8-54EE83EAE7BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Event">
+      <UniqueIdentifier>{FF1F37CD-EBD7-781A-54DF-517640B6130B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Property">
+      <UniqueIdentifier>{4248BFF1-AE08-3B28-7743-84A5E3C27F04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\Core\Dll\Inc\VX_DLLExport.h">
-      <Filter>Dll\Inc</Filter>
+    <ClInclude Include="Src\Common\HelperMacroes\VX_HelperMacroes.h">
+      <Filter>Common\HelperMacroes</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Core\Test.h" />
-    <ClInclude Include="Src\Common\Inc\VX_Object.h" />
-    <ClInclude Include="Src\Common\Inc\VX_ObjectPrivate.h" />
-    <ClInclude Include="Src\Common\HelperMacroes\VX_HelperMacroes.h" />
+    <ClInclude Include="Src\Common\Inc\VX_Object.h">
+      <Filter>Common\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\Inc\VX_ObjectPrivate.h">
+      <Filter>Common\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Common\Types\VX_Types.h">
+      <Filter>Common\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Dll\Inc\VX_DLLExport.h">
+      <Filter>Core\Dll\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Event\VX_Event.h">
+      <Filter>Core\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Property\VX_Property.h">
+      <Filter>Core\Property</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Core\Dll\Inc\Test.cpp">
-      <Filter>Dll\Inc</Filter>
+    <ClCompile Include="Src\Common\Src\VX_Object.cpp">
+      <Filter>Common\Src</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Common\Src\VX_Object.cpp" />
   </ItemGroup>
 </Project>
