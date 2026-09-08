@@ -13,10 +13,13 @@
       <Filter>Dll\Inc</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\Test.h" />
+    <ClInclude Include="Src\Common\Inc\VX_Object.h" />
+    <ClInclude Include="Src\Common\Inc\VX_ObjectPrivate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Core\Dll\Inc\Test.cpp">
       <Filter>Dll\Inc</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Common\Src\VX_Object.cpp" />
   </ItemGroup>
 </Project>
