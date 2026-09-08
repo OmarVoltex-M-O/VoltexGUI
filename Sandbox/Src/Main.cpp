@@ -5,13 +5,15 @@
 class Test {
 public:
 	Voltex::VX_Property<int> Age = 100;
-	Voltex::VX_EventToken token;
+	Voltex::VX_UI64 id;
 	Test() {
-		token = Age.Changed() += { this, &Test::OnAgeChanged };
+		id = Age.Changed() += { this, &Test::OnAgeChanged };
+		Age.Changed() += [this](const int& oldValue, const int& newValue) {
+			std::print("----Called from lambada Old value is {} New value is {}\n", oldValue, newValue);
+		};
 	}
 	void OnAgeChanged(const int& oldValue, const int& newValue) {
-		Age.Changed() -= token.id;
-		std::print("Old value is {} New value is {}\n", oldValue, newValue);
+		std::print("----Called from a regular function Old value is {} New value is {}\n", oldValue, newValue);
 	}
 };
 

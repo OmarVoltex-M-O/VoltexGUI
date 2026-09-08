@@ -10,20 +10,30 @@ namespace Voltex {
 	public:
 		VX_Property() noexcept = default;
 
-		VX_Property(T value) noexcept : m_value(value) {};
+		VX_Property(T value) noexcept : m_value(std::move(value)) {};
 
-		void operator=(const T& value) noexcept {
+		VX_Property<T>& operator=(const T& value) noexcept {
 			if (value != m_value) {
 				T oldValue = std::move(m_value);
 				m_value = std::move(value);
 				m_changed(oldValue, m_value);
 			}
+			return *this;
+		}
+		
+		VX_Property<T>& operator=(T&& value) noexcept {
+			if (value != m_value) {
+				T oldValue = std::move(m_value);
+				m_value = std::move(value);
+				m_changed(oldValue, m_value);
+			}
+			return *this;
 		}
 
-		operator T&(){ return m_value; }
+		operator T&() noexcept { return m_value; }
 
-		T& Get() { return m_value; }
-		const T& Get() const { return m_value; }
+		T& Get() noexcept { return m_value; }
+		[[nodiscard]]const T& Get() const noexcept { return m_value; }
 
 		VX_Event<const T&, const T&>& Changed() { return m_changed; }
 

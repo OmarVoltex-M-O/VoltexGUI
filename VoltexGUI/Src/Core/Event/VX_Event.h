@@ -9,14 +9,16 @@
 #include <string.h>
 
 namespace Voltex {
-	struct VX_EventToken {
-		VX_UI64 id;
-	};
-
 	template <typename... Args>
 	class VX_EventHandler {
 	public:
-		VX_EventHandler() noexcept = default;
+		VX_EventHandler() noexcept :
+			m_instance(nullptr),
+			m_methodSize(0),
+			m_methodBytes(0),
+			m_callable(nullptr),
+			m_isMemberFunction(false) {}
+
 		template <typename T>
 		VX_EventHandler(T* inst, void(T::* method)(Args... args)) noexcept : 
 			m_instance(inst),
@@ -27,8 +29,9 @@ namespace Voltex {
 				(inst->*method)(args...);
 			};
 		};
-		VX_EventHandler(std::function<void(Args...)> fun) noexcept : 
-			m_callable(fun),
+
+		VX_EventHandler(std::function<void(Args...)> function) noexcept : 
+			m_callable(std::move(function)),
 			m_isMemberFunction(false) {};
 
 		[[nodiscard]]void operator()(const Args&... args) const noexcept {
@@ -37,7 +40,7 @@ namespace Voltex {
 			}
 		}
 
-		bool operator==(const VX_EventHandler other) {
+		[[nodiscard]]bool operator==(const VX_EventHandler other) const noexcept {
 			if (!m_isMemberFunction) {
 				return false;
 			}
@@ -59,12 +62,21 @@ namespace Voltex {
 	public:
 		using VX_Handler = VX_EventHandler<Args...>;
 
-		VX_EventToken operator+=(VX_Handler handler) noexcept {
+		/* An operator to subscribe to events using regular functions (not lambada). */
+		VX_UI64 operator+=(VX_Handler handler) noexcept {
 			m_nextId++;
 			m_handlers[m_nextId] = std::move(handler);
 			return { m_nextId };
 		}
+
+		/* An operator to subscribe to events using lambada. */
+		VX_UI64 operator+=(std::function<void(Args...)> function) noexcept {
+			m_nextId++;
+			m_handlers[m_nextId] = std::move(function);
+			return { m_nextId };
+		}
 		
+		/* An operator to unsubscribe from events by the handler. */
 		void operator-=(VX_Handler handler) noexcept {
 			for (const auto& [id, hand] : m_handlers) {
 				if (hand == handler) {
@@ -73,11 +85,13 @@ namespace Voltex {
 			}
 		}
 		
+		/* An operator to unsubscribe from events by the id. */
 		void operator-=(const VX_UI64& id) noexcept {
 			if (auto it = m_handlers.find(id); it == m_handlers.end()) return;
 			m_handlersToUnsubscribe.push_back(id);
 		}
 
+		/* An operator to fire all the events up. */
 		void operator()(const Args&... args) noexcept {
 			for (const auto& [id, handler] : m_handlers) {
 				handler(args...);
