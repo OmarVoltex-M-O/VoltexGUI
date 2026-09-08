@@ -15,6 +15,7 @@
     <ClInclude Include="Src\Core\Test.h" />
     <ClInclude Include="Src\Common\Inc\VX_Object.h" />
     <ClInclude Include="Src\Common\Inc\VX_ObjectPrivate.h" />
+    <ClInclude Include="Src\Common\HelperMacroes\VX_HelperMacroes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Core\Dll\Inc\Test.cpp">
