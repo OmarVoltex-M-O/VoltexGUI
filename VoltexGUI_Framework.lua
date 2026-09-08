@@ -79,6 +79,9 @@ project "Sandbox"
 	language "C++"
 	cppdialect "C++23"
 
+	targetdir("bin" .. outDir)
+	objdir("bin-int" .. outDir .. "/%{prj.name}")
+
 	files
 	{
 		"%{prj.name}/Src/**.h",

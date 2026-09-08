@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Dll">
+      <UniqueIdentifier>{81E2870B-EDEB-877C-7667-9E7CE26F937C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dll\Inc">
+      <UniqueIdentifier>{EA45E279-5625-6115-5F3D-ECEBCB9BC776}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Src\Core\Dll\Inc\VX_DLLExport.h">
+      <Filter>Dll\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\Core\Dll\Inc\Test.cpp">
+      <Filter>Dll\Inc</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

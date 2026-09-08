@@ -431,3 +431,6 @@ FodyWeavers.xsd
 *.exe
 *.vcxproj
 *.slnx
+
+bin-int/
+bin/
