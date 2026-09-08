@@ -41,7 +41,7 @@ namespace Voltex {
 			}
 		}
 
-		VX_NO_DISCARDbool operator==(const VX_EventHandler other) const noexcept {
+		VX_NO_DISCARD bool operator==(const VX_EventHandler other) const noexcept {
 			if (!m_isMemberFunction) {
 				return false;
 			}

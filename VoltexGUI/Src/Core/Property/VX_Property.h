@@ -31,6 +31,13 @@ namespace Voltex {
 			return *this;
 		}
 
+		VX_Property<T>& operator++() {
+			if (std::is_integral_v<T>) {
+				m_value++;
+			}
+			return *this;
+		}
+
 		operator T&() noexcept { return m_value; }
 
 		T& Get() noexcept { return m_value; }
